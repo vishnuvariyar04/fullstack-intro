@@ -18,7 +18,7 @@ export default async function Home() {
   const posts = await getPosts();
   return (
     <main className={styles.main}>
-      <h1>Feed</h1>
+      <h1>Fuck</h1>
       {
         posts.map((post)=>{
           return (
