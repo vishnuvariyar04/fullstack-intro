@@ -1,6 +1,7 @@
 import Post from './components/post';
 import styles from './page.module.css'
 import prisma from '@/lib/prisma';
+import Link from 'next/link';
 
 async function getPosts(){
   const posts = await prisma.post.findMany({
@@ -18,7 +19,8 @@ export default async function Home() {
   const posts = await getPosts();
   return (
     <main className={styles.main}>
-      <h1>Fuck</h1>
+      <Link href={'/add-post'}>AddPost</Link>
+      <h1>Feed</h1>
       {
         posts.map((post)=>{
           return (
@@ -27,7 +29,7 @@ export default async function Home() {
               id={post.id}
               title={post.title}
               content={post.content}
-              authorName={post.authorName}
+              authorName={post.author.name}
             />
           )
         })
